@@ -33,3 +33,15 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Config Enviroment
+.env
+
+#Package
+node_modules/
+
+#Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+**/*.log
