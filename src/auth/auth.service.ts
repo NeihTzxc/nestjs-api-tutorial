@@ -13,14 +13,13 @@ export class AuthService{
         const hash = await argon.hash(dto.password)
         //save the new user in the db
         try {
-            const user = this.prisma.user.create({
+            const user = await this.prisma.user.create({
                 data: {
                     email: dto.email,
                     hash
                 }
-            }) 
-            //return the saved user
-            return user
+            }); 
+            return this.signToken(user.id, user.email)
         } catch(err) {
             if (err instanceof PrismaClientKnownRequestError) {
                 if (err.code === 'P2002') {
